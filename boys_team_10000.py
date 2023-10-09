@@ -15,12 +15,13 @@ class Grass:
         pass
 
 
-class Boy: # 소년의 모습은 다 똑같기 때문에 이미지 로드를 한번만 할 거야
+class Boy:  # 소년의 모습은 다 똑같기 때문에 이미지 로드를 한번만 할 거야
     image = None
+
     def __init__(self):
         self.x, self.y = random.randint(0, 800), 90
         self.frame = 0
-        if Boy.image == None:
+        if Boy.image is None: # 그 변수를 쓸 때는 클래스.클래스변수 <- 이렇게 적어요
             Boy.image = load_image('run_animation.png')
 
     def update(self):
@@ -53,7 +54,7 @@ def reset_world():
     grass = Grass()
     world.append(grass)
 
-    team = [Boy() for i in range(1000)]
+    team = [Boy() for i in range(10000)]
     world += team
 
 
