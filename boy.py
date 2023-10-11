@@ -157,7 +157,6 @@ class StateMachine:
                 return True
         return False
 
-
     def start(self):
         self.cur_state.enter(self.boy, ('NONE', 0))
 
@@ -166,10 +165,6 @@ class StateMachine:
 
     def draw(self):
         self.cur_state.draw(self.boy)
-
-
-
-
 
 class Boy:
     def __init__(self):
