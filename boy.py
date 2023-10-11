@@ -102,6 +102,10 @@ class AutoRun:
 
     @staticmethod
     def enter(boy, e):
+        if boy.action == 2:
+            boy.dir, boy.action = -1, 0
+        elif boy.action == 3:
+            boy.dir, boy.action = 1, 1
         print("오토런 시작")
         boy.autorun_start_time = get_time()
         pass
@@ -117,12 +121,13 @@ class AutoRun:
         
         # 충돌 체크
 
+
         if get_time() - boy.autorun_start_time > 5:
             boy.state_machine.handle_event(('TIME_OUT', 0))
 
     @staticmethod
     def draw(boy):
-        boy.image.clip_draw(boy.frame * 100, boy.action * 100, 100, 100, boy.x, boy.y, 200, 200)
+        boy.image.clip_draw(boy.frame * 100, boy.action * 100, 100, 100, boy.x, boy.y + 50, 200, 200)
 
 
 class StateMachine:
