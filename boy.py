@@ -31,6 +31,7 @@ class Idle:
 
     @staticmethod
     def enter(boy, e):
+        print("idle 시작")
         if boy.action == 0:
             boy.action = 2
         elif boy.action == 1:
@@ -79,6 +80,7 @@ class Run:
 
     @staticmethod
     def enter(boy, e):
+        print("런 시작")
         if right_down(e) or left_up(e):
             boy.dir, boy.action = 1, 1
         elif left_down(e) or right_up(e):
@@ -122,15 +124,17 @@ class AutoRun:
         # 충돌 체크
         if boy.x > 800:
             boy.dir = -1
+            boy.action = 0
         if boy.x < 0:
             boy.dir = 1
+            boy.action = 1
 
         if get_time() - boy.autorun_start_time > 5:
             boy.state_machine.handle_event(('TIME_OUT', 0))
 
     @staticmethod
     def draw(boy):
-        boy.image.clip_draw(boy.frame * 100, boy.action * 100, 100, 100, boy.x, boy.y + 50, 200, 200)
+        boy.image.clip_draw(boy.frame * 100, boy.action * 100, 100, 100, boy.x, boy.y + 25, 200, 200)
 
 
 class StateMachine:
