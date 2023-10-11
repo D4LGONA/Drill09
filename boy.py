@@ -145,7 +145,7 @@ class StateMachine:
             Idle: {right_down: Run, left_down: Run, left_up: Run, right_up: Run, time_out: Sleep, a_down: AutoRun},
             Run: {right_down: Idle, left_down: Idle, right_up: Idle, left_up: Idle},
             Sleep: {right_down: Run, left_down: Run, right_up: Run, left_up: Run, space_down: Idle},  # 이중 딕 셔너리
-            AutoRun: {time_out: Idle}
+            AutoRun: {time_out: Idle, left_down: Run, right_down: Run}
         }
 
     def handle_event(self, e):
