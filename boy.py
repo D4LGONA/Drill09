@@ -120,7 +120,10 @@ class AutoRun:
         boy.x += boy.dir * 10
         
         # 충돌 체크
-
+        if boy.x > 800:
+            boy.dir = -1
+        if boy.x < 0:
+            boy.dir = 1
 
         if get_time() - boy.autorun_start_time > 5:
             boy.state_machine.handle_event(('TIME_OUT', 0))
